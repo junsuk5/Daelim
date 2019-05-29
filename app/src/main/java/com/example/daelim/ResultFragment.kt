@@ -3,7 +3,6 @@ package com.example.daelim
 
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -22,10 +21,10 @@ class ResultFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_result, container, false)
 
-        val binding = DataBindingUtil.bind<FragmentResultBinding>(view)
-        binding?.body = args.body
+        val binding = FragmentResultBinding.bind(view)
+        binding.body = args.body
 
-        return binding?.root
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
