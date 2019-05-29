@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.io.Serializable
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -20,6 +21,8 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class MainFragment : Fragment() {
+
+    data class Body(val height: Float, val weight: Float) : Serializable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +39,9 @@ class MainFragment : Fragment() {
             val height = height_edit.text.toString().toFloat()
             val weight = weight_edit.text.toString().toFloat()
 
-            val action = MainFragmentDirections.actionMainFragmentToResultFragment(height, weight)
+            val body = Body(height, weight)
+
+            val action = MainFragmentDirections.actionMainFragmentToResultFragment(body)
 
             findNavController().navigate(action)
         }
